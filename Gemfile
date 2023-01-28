@@ -1,14 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '3.0.0'
 
 gem 'pagy'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.5'
+#gem 'mysql2', '~> 0.5'
+
+group :development do
+  gem 'mysql2', '~> 0.5'
+end
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -44,3 +49,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :production do
+  gem 'pg', '>= 0.18', '< 2.0'
+end

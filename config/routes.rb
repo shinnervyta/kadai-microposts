@@ -12,9 +12,8 @@ Rails.application.routes.draw do
       get :followers
     end
     
-    
     member do
-      get :favorite_posts
+      get :likes
       get :favorited_posts
     end
     
