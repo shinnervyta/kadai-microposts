@@ -6,9 +6,24 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :create]
-  resources :microposts, only: [:create, :destroy]
+  resources :users, only: [:index, :show, :create] do
+    member do
+      get :followings
+      get :followers
+    end
+    
+    
+    member do
+      get :favorite_posts
+      get :favorited_posts
+    end
+    
+    
+  end
   
+  resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

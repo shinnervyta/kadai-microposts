@@ -8,7 +8,7 @@
         <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
       </div>
     </div>
-    <%= render 'relationships/follow_button', user: @user %>
+    <%= render 'favorites/bookmark_button', micropost: @micropost %>
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
@@ -17,6 +17,6 @@
       <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge bg-secondary"><%= @count_followers %></span></a></li>
       <li class="nav-item"><a href="<%= favorite_posts_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(favorite_posts_user_path(@user)) %>">Favorite_posts  <span class="badge bg-secondary"><%= @count_favorite_posts %></span></a></li>
     </ul>
-    <%= render 'microposts/microposts', microposts: @microposts %>
+    <%= render 'microposts/microposts', microposts: @favorite_posts %>
   </div>
 </div>
